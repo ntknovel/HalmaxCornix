@@ -1,0 +1,11 @@
+---
+include:
+  - board: cornix_left//zmk
+    artifact-name: cornix_left_basic_260817_fixed_v1_2
+
+  - board: cornix_right//zmk
+    artifact-name: cornix_right_basic_260817_fixed_v1_2
+
+  - board: cornix_right//zmk
+    shield: settings_reset
+    artifact-name: cornix_settings_reset
