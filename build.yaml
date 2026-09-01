@@ -1,11 +1,17 @@
 ---
 include:
+  # Central/left: ZMK Studio over USB/UART; locking is intentionally disabled
+  # so every physical key remains freely editable and no unlock key is consumed.
   - board: cornix_left//zmk
-    artifact-name: cornix_left_basic_260817_fixed_v1_2
+    snippet: studio-rpc-usb-uart
+    cmake-args: -DCONFIG_ZMK_STUDIO=y -DCONFIG_ZMK_STUDIO_LOCKING=n -DCONFIG_ZMK_KEYMAP_LAYER_NAME_MAX_LEN=24
+    artifact-name: cornix_left_basic_260817_fixed_v1_3_studio
 
+  # Peripheral/right: normal split firmware; Studio belongs only on the central.
   - board: cornix_right//zmk
-    artifact-name: cornix_right_basic_260817_fixed_v1_2
+    artifact-name: cornix_right_basic_260817_fixed_v1_3
 
+  # Pairing/settings reset stays minimal and has no Studio transport.
   - board: cornix_right//zmk
     shield: settings_reset
     artifact-name: cornix_settings_reset

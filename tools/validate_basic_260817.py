@@ -49,7 +49,7 @@ for node in layers:
     if len(refs) != 50:
         fail(f'{node}: expected 50 bindings, got {len(refs)}')
 if KEYMAP.count('sensor-bindings = <') != 12:
-    fail('expected sensor bindings on all 12 layers')
+    fail('expected sensor bindings on all 12 active layers')
 if len(META['layouts']['LAYOUT_50']['layout']) != 50 or len(META['sensors']) != 2:
     fail('Keymap Editor metadata mismatch')
 if len(SOURCE['layout']) != 10:
@@ -192,12 +192,38 @@ for watched in ['src/**','dts/**','zephyr/**','CMakeLists.txt','Kconfig']:
 if '6e2ef41e022d555b10f116e395832913f71717b3' not in workflow:
     fail('workflow is not pinned')
 
-print('Cornix ZMK BASIC 260817 FIXED v1.2 validation: PASS')
-print('- layers: 10 user + 2 internal mouse-speed layers, all 50 positions')
+# ZMK Studio: central-only transport, maximum key editability, and spare layers.
+left, right, reset = rows
+if left.get('snippet') != 'studio-rpc-usb-uart':
+    fail('left/central build is missing studio-rpc-usb-uart')
+left_args = left.get('cmake-args', '')
+for arg in ['-DCONFIG_ZMK_STUDIO=y', '-DCONFIG_ZMK_STUDIO_LOCKING=n',
+            '-DCONFIG_ZMK_KEYMAP_LAYER_NAME_MAX_LEN=24']:
+    if arg not in left_args:
+        fail(f'left Studio cmake args missing {arg}')
+if 'snippet' in right or 'cmake-args' in right:
+    fail('right/peripheral must not enable Studio')
+if 'snippet' in reset or 'cmake-args' in reset:
+    fail('settings reset must not enable Studio')
+for idx in range(1, 5):
+    m = re.search(rf'\bstudio_extra_{idx}\s*\{{(.*?)\n\s*\}};', KEYMAP, re.S)
+    if not m or 'status = "reserved";' not in m.group(1):
+        fail(f'missing Studio reserved layer {idx}')
+if KEYMAP.count('status = "reserved";') != 4:
+    fail('expected exactly four Studio reserved layers')
+if 'CONFIG_ZMK_SLEEP=y' in CONF:
+    fail('deep sleep must remain disabled for Studio on Zephyr 4.1 split central')
+if 'INTERNAL ACL2 Fast' not in KEYMAP or 'INTERNAL ACL0 Slow' not in KEYMAP:
+    fail('internal ACL helper layers are not clearly labelled')
+
+print('Cornix ZMK BASIC 260817 FIXED v1.3 STUDIO validation: PASS')
+print('- layers: 10 user + 2 internal mouse-speed + 4 Studio-reserved')
 print('- encoders: 2 x 12 layers')
 print('- combos: 31 with reconstructed BASE/PLAIN/NUMPAD masks')
 print('- LT4(Esc) / LT7(Delete): positional balanced conversion PASS')
 print('- KC_ACL0 precision / KC_ACL2 maximum momentary modes: PASS')
+print('- ZMK Studio: central USB transport, no-lock runtime editing: PASS')
+print('- Studio spare capacity: 4 reserved layers: PASS')
 print('- Editing/Symbols entry + BT recovery/output keys: PASS')
 print('- runtime RF 0/+/-/MAX module: PASS')
 print(f'- RF C API-shaped syntax: {api_result}')

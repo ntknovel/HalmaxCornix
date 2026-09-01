@@ -116,5 +116,28 @@
   "internal_helper_layers": [
     "Mouse ACL2 Fast",
     "Mouse ACL0 Slow"
-  ]
+  ],
+  "firmware_version": "v1.3-studio",
+  "zmk_studio": {
+    "enabled_on": "cornix_left central only",
+    "usb_transport_snippet": "studio-rpc-usb-uart",
+    "locking": false,
+    "active_layers": 12,
+    "reserved_extra_layers": 4,
+    "editable_runtime": [
+      "all 50 physical key bindings",
+      "predefined built-in behaviors",
+      "predefined user behaviors",
+      "layer names",
+      "four additional reserved layers"
+    ],
+    "not_runtime_editable_in_current_studio": [
+      "combos",
+      "encoder sensor-bindings",
+      "behavior timing/flavor/properties",
+      "Kconfig/BLE/RF compile-time settings",
+      "new behavior definitions",
+      "physical layout definitions"
+    ]
+  }
 }

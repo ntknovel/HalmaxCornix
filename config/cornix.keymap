@@ -1,8 +1,8 @@
 /*
- * Cornix ZMK BASIC 260817 FIXED v1.2
+ * Cornix ZMK BASIC 260817 FIXED v1.3 STUDIO
  * Converted from the user's RMK/Vial backup: "cornix 260817.vil".
  *
- * 10 user layers + 2 internal mouse-speed layers, 50 positions, two encoders, 31 active combos.
+ * 10 user layers + 2 internal mouse-speed layers + 4 Studio-reserved layers, 50 positions, two encoders, 31 active combos.
  * Includes BT recovery/output controls and runtime TX 0/+/-/MAX.
  * No Korean chord/abbreviation engine or other custom typing engine is included.
  * SPDX-License-Identifier: MIT
@@ -200,7 +200,7 @@
             trigger-period-ms = <16>;
             time-to-max-speed-ms = <0>;
             acceleration-exponent = <0>;
-            display-name = "Mouse ACL0 Slow";
+            display-name = "INTERNAL ACL0 Slow";
         };
 
         m2mv: mouse_move_acl2 {
@@ -211,7 +211,7 @@
             trigger-period-ms = <16>;
             time-to-max-speed-ms = <0>;
             acceleration-exponent = <0>;
-            display-name = "Mouse ACL2 Fast";
+            display-name = "INTERNAL ACL2 Fast";
         };
 
         m0sc: mouse_scroll_acl0 {
@@ -562,7 +562,7 @@
 
         /* Internal helper layer for momentary KC_ACL2-equivalent maximum speed. */
         mouse_acl2_layer {
-            display-name = "Mouse ACL2 Fast";
+            display-name = "INTERNAL ACL2 Fast";
             bindings = <
                 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &m2sc MOVE_Y(10)  &m2mv MOVE_Y(-600)  &m2sc MOVE_Y(-10)  &trans  &trans
                 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &m2mv MOVE_X(-600)  &m2mv MOVE_Y(600)  &m2mv MOVE_X(600)  &m2sc MOVE_X(10)  &trans
@@ -574,7 +574,7 @@
 
         /* Internal helper layer for momentary KC_ACL0-equivalent precision speed. */
         mouse_acl0_layer {
-            display-name = "Mouse ACL0 Slow";
+            display-name = "INTERNAL ACL0 Slow";
             bindings = <
                 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &m0sc MOVE_Y(3)  &m0mv MOVE_Y(-150)  &m0sc MOVE_Y(-3)  &trans  &trans
                 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &m0mv MOVE_X(-150)  &m0mv MOVE_Y(150)  &m0mv MOVE_X(150)  &m0sc MOVE_X(3)  &trans
@@ -582,6 +582,27 @@
                 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
             >;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN  &encscr>;
+        };
+
+        /*
+         * Extra runtime-editable layer slots for ZMK Studio.
+         * Studio cannot create layers that are absent from devicetree, so four
+         * reserved slots are provided. They are ignored in non-Studio builds.
+         */
+        studio_extra_1 {
+            status = "reserved";
+        };
+
+        studio_extra_2 {
+            status = "reserved";
+        };
+
+        studio_extra_3 {
+            status = "reserved";
+        };
+
+        studio_extra_4 {
+            status = "reserved";
         };
     };
 };
