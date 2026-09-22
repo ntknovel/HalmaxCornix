@@ -1,0 +1,151 @@
+--- cornix.keymap.v1.1
++++ cornix.keymap.v1.2
+@@ -1,8 +1,8 @@
+ /*
+- * Cornix ZMK BASIC 260817 FIXED v1.1
++ * Cornix ZMK BASIC 260817 FIXED v1.2
+  * Converted from the user's RMK/Vial backup: "cornix 260817.vil".
+  *
+- * 10 layers, 50 positions, two encoders, 31 active combos.
++ * 10 user layers + 2 internal mouse-speed layers, 50 positions, two encoders, 31 active combos.
+  * Includes BT recovery/output controls and runtime TX 0/+/-/MAX.
+  * No Korean chord/abbreviation engine or other custom typing engine is included.
+  * SPDX-License-Identifier: MIT
+@@ -13,6 +13,7 @@
+ #include <dt-bindings/zmk/keys.h>
+ #include <dt-bindings/zmk/pointing.h>
+ #include <dt-bindings/zmk/outputs.h>
++#include <zephyr/dt-bindings/input/input-event-codes.h>
+ 
+ #define BASE      0
+ #define NAV       1
+@@ -24,6 +25,8 @@
+ #define FN        7
+ #define PUNCT     8
+ #define PLAIN     9
++#define MOUSE_ACL2 10
++#define MOUSE_ACL0 11
+ 
+ / {
+     behaviors {
+@@ -178,6 +181,80 @@
+             #sensor-binding-cells = <0>;
+             bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>;
+         };
++
++
++        /*
++         * QMK/Vial KC_ACL0 and KC_ACL2 equivalents.
++         *
++         * Normal &mmv keeps ZMK's 300 ms acceleration curve. While ACL0 or
++         * ACL2 is held, a helper layer replaces only the movement/scroll keys
++         * with constant-speed behavior instances:
++         *   ACL0: cursor 150 (1/4 of ZMK's 600 default), scroll 3
++         *   ACL2: cursor 600 (immediate maximum), scroll 10
++         */
++        m0mv: mouse_move_acl0 {
++            compatible = "zmk,behavior-input-two-axis";
++            #binding-cells = <1>;
++            x-input-code = <INPUT_REL_X>;
++            y-input-code = <INPUT_REL_Y>;
++            trigger-period-ms = <16>;
++            time-to-max-speed-ms = <0>;
++            acceleration-exponent = <0>;
++            display-name = "Mouse ACL0 Slow";
++        };
++
++        m2mv: mouse_move_acl2 {
++            compatible = "zmk,behavior-input-two-axis";
++            #binding-cells = <1>;
++            x-input-code = <INPUT_REL_X>;
++            y-input-code = <INPUT_REL_Y>;
++            trigger-period-ms = <16>;
++            time-to-max-speed-ms = <0>;
++            acceleration-exponent = <0>;
++            display-name = "Mouse ACL2 Fast";
++        };
++
++        m0sc: mouse_scroll_acl0 {
++            compatible = "zmk,behavior-input-two-axis";
++            #binding-cells = <1>;
++            x-input-code = <INPUT_REL_HWHEEL>;
++            y-input-code = <INPUT_REL_WHEEL>;
++            trigger-period-ms = <16>;
++            time-to-max-speed-ms = <0>;
++            acceleration-exponent = <0>;
++            display-name = "Scroll ACL0 Slow";
++        };
++
++        m2sc: mouse_scroll_acl2 {
++            compatible = "zmk,behavior-input-two-axis";
++            #binding-cells = <1>;
++            x-input-code = <INPUT_REL_HWHEEL>;
++            y-input-code = <INPUT_REL_WHEEL>;
++            trigger-period-ms = <16>;
++            time-to-max-speed-ms = <0>;
++            acceleration-exponent = <0>;
++            display-name = "Scroll ACL2 Fast";
++        };
++    };
++
++    m0mv_input_listener: m0mv_input_listener {
++        compatible = "zmk,input-listener";
++        device = <&m0mv>;
++    };
++
++    m2mv_input_listener: m2mv_input_listener {
++        compatible = "zmk,input-listener";
++        device = <&m2mv>;
++    };
++
++    m0sc_input_listener: m0sc_input_listener {
++        compatible = "zmk,input-listener";
++        device = <&m0sc>;
++    };
++
++    m2sc_input_listener: m2sc_input_listener {
++        compatible = "zmk,input-listener";
++        device = <&m2sc>;
+     };
+ 
+     combos {
+@@ -398,7 +475,7 @@
+             display-name = "Mouse";
+             bindings = <
+                 &none  &none  &none  &none  &none  &none  &none  &msc SCRL_UP  &mmv MOVE_UP  &msc SCRL_DOWN  &none  &none
+-                &none  &none  &none  &mkp MB2  &mkp MB1  &none  &none  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &msc SCRL_RIGHT  &none
++                &none  &mo MOUSE_ACL0  &mo MOUSE_ACL2  &mkp MB2  &mkp MB1  &none  &none  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &msc SCRL_RIGHT  &none
+                 &none  &kp LGUI  &kp LALT  &kp LCTRL  &kp LSHIFT  &none  &kp C_MUTE  &mkp MB3  &none  &msc SCRL_LEFT  &mkp MB3  &msc SCRL_RIGHT  &msc SCRL_LEFT  &none
+                 &none  &none  &none  &none  &none  &none  &mkp MB1  &mkp MB2  &mkp MB3  &none  &none  &none
+             >;
+@@ -481,5 +558,30 @@
+             >;
+             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN  &encscr>;
+         };
++
++
++        /* Internal helper layer for momentary KC_ACL2-equivalent maximum speed. */
++        mouse_acl2_layer {
++            display-name = "Mouse ACL2 Fast";
++            bindings = <
++                &trans  &trans  &trans  &trans  &trans  &trans  &trans  &m2sc MOVE_Y(10)  &m2mv MOVE_Y(-600)  &m2sc MOVE_Y(-10)  &trans  &trans
++                &trans  &trans  &trans  &trans  &trans  &trans  &trans  &m2mv MOVE_X(-600)  &m2mv MOVE_Y(600)  &m2mv MOVE_X(600)  &m2sc MOVE_X(10)  &trans
++                &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &m2sc MOVE_X(-10)  &trans  &m2sc MOVE_X(10)  &m2sc MOVE_X(-10)  &trans
++                &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
++            >;
++            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN  &encscr>;
++        };
++
++        /* Internal helper layer for momentary KC_ACL0-equivalent precision speed. */
++        mouse_acl0_layer {
++            display-name = "Mouse ACL0 Slow";
++            bindings = <
++                &trans  &trans  &trans  &trans  &trans  &trans  &trans  &m0sc MOVE_Y(3)  &m0mv MOVE_Y(-150)  &m0sc MOVE_Y(-3)  &trans  &trans
++                &trans  &trans  &trans  &trans  &trans  &trans  &trans  &m0mv MOVE_X(-150)  &m0mv MOVE_Y(150)  &m0mv MOVE_X(150)  &m0sc MOVE_X(3)  &trans
++                &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &m0sc MOVE_X(-3)  &trans  &m0sc MOVE_X(3)  &m0sc MOVE_X(-3)  &trans
++                &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
++            >;
++            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN  &encscr>;
++        };
+     };
+ };

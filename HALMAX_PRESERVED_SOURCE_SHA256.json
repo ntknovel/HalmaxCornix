@@ -1,0 +1,11 @@
+{
+  "config/cornix.keymap": "8a4957b311b07c330abbc9bab4fc03bbea8c7cdbe2fe7c1ab6f92721ed8d9f12",
+  "config/cornix.json": "2cf40748171523fd6dedd4459dc328b40b00b47dc2f0b348d54370a67ec9f2c2",
+  "config/cornix.conf": "b8058790f65d8de266bc830b3b4ce5755afe0b077547ef5a975a1a081a1963a2",
+  "config/west.yml": "3ad7eee5430f70b4fb86e19a4d7eee3e83ceda192f78001a168a6c693ee070f9",
+  "config/settings_reset.conf": "7cc8a89b024779bec824479b16a94811b654477584dcc5f52710cbe8e7001182",
+  "source/cornix 260817.vil": "8115dec13336398f907379bf14daae487ca4c18191f86929c050e2f570712180",
+  "src/behaviors/behavior_rf_power.c": "4b1083c8b9ece642c7db19e97c6cdd22d702083f33d1df7959a4ed7ae81bbcf5",
+  "dts/bindings/behaviors/zmk,behavior-rf-power.yaml": "be4e3dbca0b2a24cbfc2a3708649b47c37e94b8b20bc318a250b8029275c7f0f",
+  "config/boards/shields/cornix_compat/Kconfig.defconfig": "556e5ae44525386b48b6e474f807024556287d2832f1d9c65e5a6bb83719a0e0"
+}

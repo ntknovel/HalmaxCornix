@@ -1,0 +1,120 @@
+{
+  "source": "cornix 260817.vil",
+  "source_sha256": "8115dec13336398f907379bf14daae487ca4c18191f86929c050e2f570712180",
+  "layers": 12,
+  "positions_per_layer": 50,
+  "encoders_per_layer": 2,
+  "active_combos": 31,
+  "layer_names": [
+    "Base",
+    "Navigation",
+    "Mouse",
+    "Editing",
+    "Media-BT",
+    "Numpad",
+    "Symbols",
+    "Function",
+    "Punctuation",
+    "Plain"
+  ],
+  "active_tap_dance_slots": [
+    8,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    30,
+    31
+  ],
+  "mouse_acceleration_approximations": {
+    "KC_ACL0": "momentary Mouse ACL0 helper layer; constant cursor 150, scroll 3",
+    "KC_ACL2": "momentary Mouse ACL2 helper layer; constant cursor 600, scroll 10",
+    "precedence_when_both_held": "ACL0 slow wins, matching QMK bit-check order"
+  },
+  "unbound_macros_omitted": [
+    0,
+    1
+  ],
+  "custom_typing_engine": false,
+  "runtime_rf_behavior": true,
+  "package_version": "1.2",
+  "runtime_rf_levels_dbm": [
+    0,
+    4,
+    8
+  ],
+  "bt_management_extensions": [
+    "BT_CLR",
+    "BT_CLR_ALL",
+    "OUT_BLE",
+    "OUT_USB"
+  ],
+  "layer_entry_extensions": {
+    "Editing": "Media-BT layer &mo EDIT",
+    "Symbols": "Media-BT layer &mo SYMBOL"
+  },
+  "fixed_layer_taps": {
+    "LT4(KC_ESCAPE)": "left positional balanced 200ms + prior-idle 150ms",
+    "LT7(KC_DELETE)": "right positional balanced 200ms + prior-idle 150ms"
+  },
+  "combo_layer_masks": {
+    "BASE+PLAIN": [
+      4,
+      7,
+      8,
+      11,
+      12,
+      13,
+      14,
+      16,
+      17,
+      19,
+      20
+    ],
+    "BASE+NUMPAD": [
+      6,
+      15
+    ],
+    "PLAIN only": [
+      30
+    ],
+    "BASE only": [
+      0,
+      1,
+      2,
+      3,
+      5,
+      9,
+      10,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      31
+    ]
+  },
+  "known_approximations": [
+    "KC_ACL0/KC_ACL2 use official ZMK two-axis behaviors and helper layers. They reproduce momentary quarter/max speed, but QMK and ZMK event timing are not binary-identical.",
+    "QMK/Vial one-shot Shift is represented by ZMK sticky-key &sk; QMK repeat-tap lock is not reproduced.",
+    "Vial tap-dance single-tap/single-hold entries are represented with ZMK hold-tap/layer-tap behaviors."
+  ],
+  "user_layers": 10,
+  "internal_helper_layers": [
+    "Mouse ACL2 Fast",
+    "Mouse ACL0 Slow"
+  ]
+}

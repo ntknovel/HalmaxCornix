@@ -1,0 +1,24 @@
+---
+include:
+  # Normal central: Studio over USB, no firmware unlock key required.
+  - board: cornix_left//zmk
+    snippet: studio-rpc-usb-uart
+    cmake-args: >-
+      -DCONFIG_ZMK_STUDIO=y
+      -DCONFIG_ZMK_STUDIO_LOCKING=n
+      -DCONFIG_ZMK_STUDIO_TRANSPORT_BLE=n
+      -DCONFIG_HALMAX_STUDIO_USB_AUTO_SELECT=y
+    artifact-name: halmax_cornix_left_studio_v1_3_1
+
+  # Normal peripheral: keep the original split role; no Studio RPC server.
+  - board: cornix_right//zmk
+    cmake-args: -DCONFIG_ZMK_STUDIO=n
+    artifact-name: halmax_cornix_right_v1_3_1
+
+  # Recovery only. The USB UART snippet supplies the reset image's USB path;
+  # it does NOT enable Studio, which is explicitly off for this build.
+  - board: cornix_right//zmk
+    shield: settings_reset
+    snippet: studio-rpc-usb-uart nrf52840-nosd
+    cmake-args: -DCONFIG_ZMK_STUDIO=n
+    artifact-name: halmax_cornix_settings_reset

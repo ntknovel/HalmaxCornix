@@ -1,0 +1,2 @@
+HalmaxCornix BASIC 260817 USB Studio v1.3.1
+Source package, 2026-09-22. No compiled UF2 is included.

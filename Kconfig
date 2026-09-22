@@ -1,0 +1,15 @@
+# SPDX-License-Identifier: MIT
+
+config ZMK_BEHAVIOR_RF_POWER
+    bool
+    default y
+    depends on DT_HAS_ZMK_BEHAVIOR_RF_POWER_ENABLED
+
+config HALMAX_STUDIO_USB_AUTO_SELECT
+    bool "Select USB output automatically when the PC USB connection is ready"
+    default n
+    depends on ZMK_STUDIO && ZMK_STUDIO_RPC && ZMK_USB && ZMK_SPLIT_ROLE_CENTRAL
+    help
+      Select USB once per data connection so USB Studio does not require an
+      OUT_USB key, even if BLE was selected before. This does not disable
+      Bluetooth typing or the wireless split link. Charge-only USB is ignored.

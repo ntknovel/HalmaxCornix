@@ -1,0 +1,212 @@
+--- /tmp/basic_v1/config/cornix.keymap	2026-08-18 12:40:27.000000000 +0000
++++ /mnt/data/Cornix_ZMK_BASIC_260817_FIXED_v1.1_FULL_REPO/config/cornix.keymap	2026-08-18 15:40:06.661951685 +0000
+@@ -1,8 +1,9 @@
+ /*
+- * Cornix ZMK BASIC 260817
++ * Cornix ZMK BASIC 260817 FIXED v1.1
+  * Converted from the user's RMK/Vial backup: "cornix 260817.vil".
+  *
+  * 10 layers, 50 positions, two encoders, 31 active combos.
++ * Includes BT recovery/output controls and runtime TX 0/+/-/MAX.
+  * No Korean chord/abbreviation engine or other custom typing engine is included.
+  * SPDX-License-Identifier: MIT
+  */
+@@ -11,6 +12,7 @@
+ #include <dt-bindings/zmk/bt.h>
+ #include <dt-bindings/zmk/keys.h>
+ #include <dt-bindings/zmk/pointing.h>
++#include <dt-bindings/zmk/outputs.h>
+ 
+ #define BASE      0
+ #define NAV       1
+@@ -103,13 +105,33 @@
+             display-name = "Layer-Tap 120";
+         };
+ 
+-        lt200: layer_tap_200 {
++        /*
++         * Vial LT4(Esc) and LT7(Delete) used Permissive Hold + Chordal Hold.
++         * Keep fast same-hand rolls as taps, while opposite-hand chords turn
++         * into the held layer as soon as the trigger key is released.
++         */
++        ltl200: layer_tap_left_200 {
+             compatible = "zmk,behavior-hold-tap";
+             #binding-cells = <2>;
+             bindings = <&mo>, <&kp>;
+-            flavor = "tap-preferred";
++            flavor = "balanced";
++            tapping-term-ms = <200>;
++            require-prior-idle-ms = <150>;
++            hold-trigger-key-positions = <6 7 8 9 10 11 18 19 20 21 22 23 31 32 33 34 35 36 37 44 45 46 47 48 49>;
++            hold-trigger-on-release;
++            display-name = "Layer-Tap Left 200";
++        };
++
++        ltr200: layer_tap_right_200 {
++            compatible = "zmk,behavior-hold-tap";
++            #binding-cells = <2>;
++            bindings = <&mo>, <&kp>;
++            flavor = "balanced";
+             tapping-term-ms = <200>;
+-            display-name = "Layer-Tap 200";
++            require-prior-idle-ms = <150>;
++            hold-trigger-key-positions = <0 1 2 3 4 5 12 13 14 15 16 17 24 25 26 27 28 29 30 38 39 40 41 42 43>;
++            hold-trigger-on-release;
++            display-name = "Layer-Tap Right 200";
+         };
+ 
+         lt250: layer_tap_250 {
+@@ -121,6 +143,36 @@
+             display-name = "Layer-Tap 250";
+         };
+ 
++
++        /* Runtime BLE transmit-output controls. RX sensitivity is unchanged. */
++        rf0: rf0 {
++            compatible = "zmk,behavior-rf-power";
++            #binding-cells = <0>;
++            command = <1>;
++            display-name = "TX 0 dBm";
++        };
++
++        rfu: rfu {
++            compatible = "zmk,behavior-rf-power";
++            #binding-cells = <0>;
++            command = <2>;
++            display-name = "TX Power +";
++        };
++
++        rfd: rfd {
++            compatible = "zmk,behavior-rf-power";
++            #binding-cells = <0>;
++            command = <0>;
++            display-name = "TX Power -";
++        };
++
++        rfm: rfm {
++            compatible = "zmk,behavior-rf-power";
++            #binding-cells = <0>;
++            command = <3>;
++            display-name = "TX MAX +8";
++        };
++
+         encscr: encoder_scroll {
+             compatible = "zmk,behavior-sensor-rotate";
+             #sensor-binding-cells = <0>;
+@@ -158,7 +210,7 @@
+             timeout-ms = <40>;
+             key-positions = <34 33>;
+             bindings = <&kp EQUAL>;
+-            layers = <BASE>;
++            layers = <BASE PLAIN>;
+         };
+         combo_05 {
+             timeout-ms = <40>;
+@@ -170,19 +222,19 @@
+             timeout-ms = <40>;
+             key-positions = <34 35>;
+             bindings = <&kp SEMI>;
+-            layers = <BASE>;
++            layers = <BASE NUMPAD>;
+         };
+         combo_07 {
+             timeout-ms = <40>;
+             key-positions = <4 5>;
+             bindings = <&kp LBRC>;
+-            layers = <BASE>;
++            layers = <BASE PLAIN>;
+         };
+         combo_08 {
+             timeout-ms = <40>;
+             key-positions = <25 26>;
+             bindings = <&kp LC(X)>;
+-            layers = <BASE>;
++            layers = <BASE PLAIN>;
+         };
+         combo_09 {
+             timeout-ms = <40>;
+@@ -200,55 +252,55 @@
+             timeout-ms = <40>;
+             key-positions = <29 28>;
+             bindings = <&kp LBKT>;
+-            layers = <BASE>;
++            layers = <BASE PLAIN>;
+         };
+         combo_12 {
+             timeout-ms = <40>;
+             key-positions = <32 33>;
+             bindings = <&kp RBKT>;
+-            layers = <BASE>;
++            layers = <BASE PLAIN>;
+         };
+         combo_13 {
+             timeout-ms = <40>;
+             key-positions = <26 28>;
+             bindings = <&kp LC(LS(V))>;
+-            layers = <BASE>;
++            layers = <BASE PLAIN>;
+         };
+         combo_14 {
+             timeout-ms = <40>;
+             key-positions = <6 7>;
+             bindings = <&kp RBRC>;
+-            layers = <BASE>;
++            layers = <BASE PLAIN>;
+         };
+         combo_15 {
+             timeout-ms = <40>;
+             key-positions = <36 35>;
+             bindings = <&kp EXCL>;
+-            layers = <BASE>;
++            layers = <BASE NUMPAD>;
+         };
+         combo_16 {
+             timeout-ms = <40>;
+             key-positions = <26 27>;
+             bindings = <&kp LC(C)>;
+-            layers = <BASE>;
++            layers = <BASE PLAIN>;
+         };
+         combo_17 {
+             timeout-ms = <40>;
+             key-positions = <27 28>;
+             bindings = <&kp LC(V)>;
+-            layers = <BASE>;
++            layers = <BASE PLAIN>;
+         };
+         combo_19 {
+             timeout-ms = <40>;
+             key-positions = <7 9>;
+             bindings = <&caps_word>;
+-            layers = <BASE>;
++            layers = <BASE PLAIN>;
+         };
+         combo_20 {
+             timeout-ms = <40>;
+             key-positions = <1 13>;
+             bindings = <&kp N1>;
+-            layers = <BASE>;
++            layers = <BASE PLAIN>;
+         };
+         combo_21 {
+             timeout-ms = <40>;
+@@ -326,7 +378,7 @@
+                 &th150 TILDE GRAVE  &kp Q  &kp W  &lt250 PUNCT E  &kp R  &kp T  &kp Y  &kp U  &lt250 PUNCT I  &kp O  &kp P  &kp BSPC
+                 &sk LSHIFT  &kp A  &hml LALT S  &hml LCTRL D  &hml LSHIFT F  &hml LGUI G  &hmr RGUI H  &hmr RSHIFT J  &hmr LCTRL K  &hmr RALT L  &th250 PLUS MINUS  &lt80 PUNCT RET
+                 &mo PUNCT  &kp Z  &kp X  &kp C  &kp V  &kp B  &kp C_MUTE  &mkp MB3  &kp N  &kp M  &kp COMMA  &th200 FSLH DOT  &kp UP  &sk RSHIFT
+-                &kp CAPSLOCK  &none  &none  &lt200 MEDIA_BT ESC  &lt120 MOUSE TAB  &lt60 NAV SPACE  &lt60 NUMPAD SPACE  &kp BSPC  &lt200 FN DEL  &kp LEFT  &kp DOWN  &kp RIGHT
++                &kp CAPSLOCK  &none  &none  &ltl200 MEDIA_BT ESC  &lt120 MOUSE TAB  &lt60 NAV SPACE  &lt60 NUMPAD SPACE  &kp BSPC  &ltr200 FN DEL  &kp LEFT  &kp DOWN  &kp RIGHT
+             >;
+             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN  &encscr>;
+         };
+@@ -369,8 +421,8 @@
+             bindings = <
+                 &none  &none  &none  &none  &none  &none  &none  &kp C_MUTE  &kp C_STOP  &kp C_PLAY_PAUSE  &none  &none
+                 &none  &kp LGUI  &kp LALT  &kp LCTRL  &kp LSHIFT  &none  &none  &kp C_PREV  &kp C_VOL_DN  &kp C_VOL_UP  &kp C_NEXT  &none
+-                &none  &none  &none  &none  &none  &none  &kp C_MUTE  &mkp MB3  &bt BT_NXT  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &none  &none
+-                &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none
++                &bt BT_CLR  &bt BT_CLR_ALL  &out OUT_BLE  &out OUT_USB  &mo EDIT  &mo SYMBOL  &kp C_MUTE  &mkp MB3  &bt BT_NXT  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &none  &none
++                &rf0  &rfu  &rfd  &none  &rfm  &none  &none  &none  &none  &none  &none  &none
+             >;
+             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN  &encscr>;
+         };

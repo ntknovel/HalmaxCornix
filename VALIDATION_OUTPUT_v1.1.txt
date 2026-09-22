@@ -1,0 +1,11 @@
+Cornix ZMK BASIC 260817 FIXED v1.1 validation: PASS
+- layers: 10 x 50
+- encoders: 2 x 10 layers
+- combos: 31 with reconstructed BASE/PLAIN/NUMPAD masks
+- LT4(Esc) / LT7(Delete): positional balanced conversion PASS
+- Editing/Symbols entry + BT recovery/output keys: PASS
+- runtime RF 0/+/-/MAX module: PASS
+- RF C API-shaped syntax: PASS
+- settings_reset isolation: PASS
+- STENO engine/dictionary: absent
+- keymap SHA-256: 6ed4ba1968dd5b2d4f256fb0356f2ff84664ba34bd721f4b492a7c6dfd41dbea
