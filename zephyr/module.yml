@@ -1,6 +1,0 @@
-name: zmk-behavior-rf-power
-build:
-  cmake: .
-  kconfig: Kconfig
-  settings:
-    dts_root: .
