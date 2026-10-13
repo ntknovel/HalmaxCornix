@@ -1,0 +1,12 @@
+# OPTIONAL / NOT USED BY THE DEFAULT BUILD
+#
+# Append these lines to:
+# config/boards/shields/cck_ball/cck_ball_right.conf
+# only after the stability build is proven and only if deep sleep is desired.
+#
+# WARNING:
+# The current CCK-BALL PMW3610 driver does not implement Keyball's PMW3610_PM
+# integration. Trackball-only wake may therefore be unreliable.
+
+CONFIG_ZMK_SLEEP=y
+CONFIG_ZMK_IDLE_SLEEP_TIMEOUT=900000

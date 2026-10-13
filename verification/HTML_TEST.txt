@@ -1,0 +1,2 @@
+PASS: actual source HTML rendered in Chromium set_content (file navigation blocked; no policy changes); 8 layers, 512 displayed bindings, 80 key dialogs checked.
+No device connected. Read-only source diagram, not actual Studio screenshot.

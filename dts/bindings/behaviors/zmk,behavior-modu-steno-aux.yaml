@@ -1,0 +1,21 @@
+description: MODU physical spare key with STENO Symbol and Vowel-Extension selectors
+compatible: "zmk,behavior-modu-steno-aux"
+include: zero_param.yaml
+properties:
+  normal-key:
+    type: int
+    required: true
+  symbol-key:
+    type: int
+    required: true
+  function-key:
+    type: int
+    required: true
+  function-layer:
+    type: int
+    required: true
+  symbol-layer:
+    type: int
+    required: true
+  one-shot-tab:
+    type: boolean

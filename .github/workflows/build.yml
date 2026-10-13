@@ -1,0 +1,20 @@
+name: CCK Ball 4x6 STENO Dual Studio v1.1.1
+'on':
+  push:
+    branches:
+    - zmk-autobuild-*
+permissions:
+  contents: read
+jobs:
+  source-check:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+    - run: python -m pip install pyyaml
+    - run: bash tests/run.sh
+  build:
+    needs: source-check
+    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@v0.3

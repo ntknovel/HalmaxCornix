@@ -1,0 +1,18 @@
+{
+  "checked_utc": "2026-10-13T09:43:26.912111+00:00",
+  "tools": {
+    "gcc": "/usr/bin/gcc",
+    "clang": "/usr/local/swift/usr/bin/clang",
+    "cmake": "/usr/bin/cmake",
+    "ninja": "/usr/bin/ninja",
+    "west": null,
+    "arm-none-eabi-gcc": null,
+    "arm-zephyr-eabi-gcc": null,
+    "dtc": null
+  },
+  "download_attempt_returncode": 6,
+  "download_log": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0curl: (6) Could not resolve host: raw.githubusercontent.com\n",
+  "arm_build_performed": false,
+  "uf2_generated": false,
+  "hardware_tested": false
+}

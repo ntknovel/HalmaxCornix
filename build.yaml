@@ -1,0 +1,13 @@
+---
+include:
+  - board: nice_nano_v2
+    shield: cck_ball_left
+    artifact-name: cck_ball_left_steno_v1_1_1
+  - board: nice_nano_v2
+    shield: cck_ball_right
+    snippet: studio-rpc-usb-uart
+    artifact-name: cck_ball_right_steno_studio_v1_1_1
+    cmake-args: -DCONFIG_ZMK_STUDIO=y -DCONFIG_ZMK_STUDIO_LOCKING=n -DCONFIG_ZMK_STUDIO_TRANSPORT_BLE=y
+  - board: nice_nano_v2
+    shield: settings_reset
+    artifact-name: cck_ball_settings_reset_v1_1_1

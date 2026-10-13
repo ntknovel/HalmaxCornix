@@ -1,0 +1,17 @@
+manifest:
+  remotes:
+    - name: zmkfirmware
+      url-base: https://github.com/imhy123
+    - name: DoctorWangWang
+      url-base: https://github.com/DoctorWangWang
+  projects:
+    - name: zmk
+      remote: zmkfirmware
+      revision: v0.3-branch
+      import: app/west.yml
+    - name: zmk-pmw3610-driver
+      remote: DoctorWangWang
+      revision: main
+
+  self:
+    path: config

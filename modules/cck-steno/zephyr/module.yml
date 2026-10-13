@@ -1,0 +1,7 @@
+# Imported by the parent module; do not register it a second time.
+name: cck-modu-steno
+build:
+  cmake: .
+  kconfig: Kconfig
+  settings:
+    dts_root: .

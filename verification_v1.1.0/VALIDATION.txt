@@ -1,0 +1,77 @@
+CCK BALL 4x6 MODU STENO Dual Studio v1.1.0
+Executed validation: 2026-10-13
+
+NOT RUN: west/Zephyr/ARM firmware build, final UF2 generation, actual matrix scan,
+PMW3610/EC11 hardware, USB/BLE transport, ZMK/DYA UI save/reconnect or persistent
+settings after power loss. No GPIO source comparison implies a hardware test.
+
+Donor engine fixtures are preserved as algorithm regression evidence. The
+separate CCK 60+4 mapping and the real new wheel C source have host tests.
+USB test runs the imported production USB module with stub USB/work scheduling.
+CMake test executes CMake but with synthetic ZMK API headers. API-shaped syntax
+checks are not a ZMK firmware compilation. The HTML preview is source-based.
+
+Package: PASS — 8x64 bindings; 60 original scan coordinates; 4 remappable wheels; mode23; right Studio; original PMW/GPIO; exactly 8 documented edits to original 300 physical bindings
+generated 42 role positions -> /mnt/data/cck_studio_work/CCK_BALL_4x6_MODU_STENO_DUAL_STUDIO_v1.1.0/modules/cck-steno/validation/role_position_map.h
+generated 43 canonical cases -> /mnt/data/cck_studio_work/CCK_BALL_4x6_MODU_STENO_DUAL_STUDIO_v1.1.0/modules/cck-steno/validation/canonical_engine_cases.h
+Cornix canonical 43 logical-mask golden comparison: PASS
+Cornix physical LED edge ownership invariant: PASS
+Cornix role projection: 12383 single/pair/triple cases PASS
+Cornix decoder: 11 legal final pairs; D+B and D+B+M rejected by construction
+Cornix combos: all layer-gated away from STENO
+Cornix STENO phantom-role software invariant audit: PASS
+Cornix STENO English-return runtime-state tests: PASS
+Cornix STENO decoder/dictionary tests: PASS (43 canonical exact masks + 12 GUI quick macros)
+Cornix STENO LED entry-flash/idle-off/held-count tests: PASS
+Cornix STENO v2.2.6 500ms-solo no-global-keyup-guard engine tests: PASS
+Cornix comprehensive audit regressions: PASS (172 canonical-order + 38 vowel-skew + 60 double-matrix + 189 fatigue-distribution + boundary cases + 34 solo-jamo + threshold + specials)
+Cornix STENO v2.2.6 500ms solo-correction/no-keyup-guard vowel tests: PASS
+CCK / MODU auxiliary integration: PASS (476 cases; 416 selector/release-order cases, 52 Base-layer cases, FIFO/dual/rollover/flush checks)
+Production CCK wheel router: PASS (40067 assertions, host ABI mirror; not actual sensors)
+CCK 60+4 coordinate / actual decoder integration: PASS (13249 cases)
+PASS: data-USB selection, stored BLE, reconnect, charge-only, no repeat, bounded retry
+PASS: data-USB selection, stored BLE, reconnect, charge-only, no repeat, bounded retry
+CMake actual configure / mock ZMK headers: 1 PASS
+CMake actual configure / mock ZMK headers: 2 PASS
+CMake actual configure / mock ZMK headers: 3 PASS
+CMake actual configure / mock ZMK headers: 4 PASS
+CMake actual configure / mock ZMK headers: 5 PASS
+gcc custom C API-shaped compile: 18 files, metadata ON, layer arity 1: PASS (not ARM)
+clang custom C API-shaped compile: 18 files, metadata ON, layer arity 1: PASS (not ARM)
+gcc custom C API-shaped compile: 18 files, metadata ON, layer arity 2: PASS (not ARM)
+clang custom C API-shaped compile: 18 files, metadata ON, layer arity 2: PASS (not ARM)
+Production CCK wheel router: PASS (40067 assertions, host ABI mirror; not actual sensors)
+CCK / MODU auxiliary integration: PASS (476 cases; 416 selector/release-order cases, 52 Base-layer cases, FIFO/dual/rollover/flush checks)
+
+CCK source/host checks finished. No ARM compilation or physical Studio test is claimed.
+
+Executed Chromium rendering of actual HTML source (set_content).
+512 key elements / 8 layer buttons / position23 and 4 virtual wheel popups in all layers: PASS.
+Not a real Studio/BLE/Android/device screenshot.
+
+{
+  "executed": true,
+  "tool": "GitHub ZMK Auto Builder v1.1.0 actual core.inspect_source",
+  "workflow": ".github/workflows/build.yml",
+  "targets": [
+    {
+      "board": "nice_nano_v2",
+      "shield": "cck_ball_left",
+      "artifact-name": "cck_ball_left_steno_v1_1_0"
+    },
+    {
+      "board": "nice_nano_v2",
+      "shield": "cck_ball_right",
+      "snippet": "studio-rpc-usb-uart",
+      "artifact-name": "cck_ball_right_steno_studio_v1_1_0",
+      "cmake-args": "-DCONFIG_ZMK_STUDIO=y -DCONFIG_ZMK_STUDIO_LOCKING=n -DCONFIG_ZMK_STUDIO_TRANSPORT_BLE=y"
+    },
+    {
+      "board": "nice_nano_v2",
+      "shield": "settings_reset",
+      "artifact-name": "cck_ball_settings_reset_v1_1_0"
+    }
+  ],
+  "files": 214,
+  "online_publish_or_build_run": false
+}

@@ -1,0 +1,17 @@
+#pragma once
+#include "modu_runtime_config.h"
+#define CONFIG_CCK_STENO_POINTER_ASSIST 1
+#define CONFIG_ZMK_SPLIT 1
+#define CONFIG_PMW3610_SCROLL_TICK 70
+#ifndef CONFIG_PMW3610_INVERT_SCROLL_X
+#define CONFIG_PMW3610_INVERT_SCROLL_X 0
+#endif
+#ifndef CONFIG_PMW3610_INVERT_SCROLL_Y
+#define CONFIG_PMW3610_INVERT_SCROLL_Y 0
+#endif
+#define DT_HAS_COMPAT_STATUS_OKAY(x) 1
+#define DT_INST_FOREACH_STATUS_OKAY(fn)
+#define DT_NODELABEL(x) x
+#define CCK_STRING_(x) #x
+#define DEVICE_DT_NAME(x) CCK_STRING_(x)
+#define DT_PROP(n,p) 5

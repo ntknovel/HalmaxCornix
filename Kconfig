@@ -1,0 +1,19 @@
+# SPDX-License-Identifier: MIT
+rsource "modules/cck-steno/Kconfig"
+config CCK_WHEEL_REMAP
+    bool "CCK wheel routing through Studio-editable virtual slots"
+    default n
+    depends on DT_HAS_ZMK_BEHAVIOR_CCK_WHEEL_ENABLED
+    depends on !ZMK_SPLIT || ZMK_SPLIT_ROLE_CENTRAL
+config CCK_USB_AUTO_SELECT
+    bool "CCK central chooses USB on a data connection"
+    default n
+    depends on ZMK_USB && ZMK_STUDIO
+    depends on !ZMK_SPLIT || ZMK_SPLIT_ROLE_CENTRAL
+
+config CCK_STENO_POINTER_ASSIST
+    bool "CCK STENO A/I arrow anchors and EO mouse/trackball anchor"
+    default n
+    depends on CORNIX_STENO && ZMK_POINTING
+    depends on !ZMK_SPLIT || ZMK_SPLIT_ROLE_CENTRAL
+    depends on DT_HAS_NTK_CCK_STENO_SCROLL_ENABLED

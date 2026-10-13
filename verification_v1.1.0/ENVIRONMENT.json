@@ -1,0 +1,14 @@
+{
+  "date": "2026-10-13",
+  "platform": "Linux-6.18.44-x86_64-with-glibc2.41",
+  "tools": {
+    "gcc": "/usr/bin/gcc",
+    "clang": "/usr/local/swift/usr/bin/clang",
+    "cmake": "/usr/bin/cmake",
+    "west": null,
+    "arm-none-eabi-gcc": null,
+    "dtc": null
+  },
+  "hardware_tested": false,
+  "arm_build_run": false
+}

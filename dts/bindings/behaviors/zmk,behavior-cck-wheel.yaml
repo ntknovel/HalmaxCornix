@@ -1,0 +1,3 @@
+description: Route a rotary pulse through one of four Studio-editable virtual slots
+compatible: "zmk,behavior-cck-wheel"
+include: one_param.yaml

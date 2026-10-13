@@ -1,0 +1,16 @@
+if SHIELD_CCK_BALL_RIGHT
+
+config ZMK_KEYBOARD_NAME
+    default "WK CCK BALL"
+
+config ZMK_SPLIT_ROLE_CENTRAL
+    default y
+
+endif
+
+if SHIELD_CCK_BALL_LEFT || SHIELD_CCK_BALL_RIGHT
+
+config ZMK_SPLIT
+    default y
+
+endif

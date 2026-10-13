@@ -1,0 +1,18 @@
+CCK BALL 4x6 MODU STENO v1.1.1 — 전체 빌드 소스
+
+1. 기존 GitHub ZMK 자동 빌더의 파일 선택에서 이 ZIP 선택.
+2. 대상 저장소와 토큰 확인 후 빌드.
+3. Actions의 세 타깃이 모두 성공한 실행의 UF2만 사용.
+4. LEFT UF2는 왼쪽, RIGHT UF2는 오른쪽. USB Studio는 오른쪽!
+5. settings_reset은 일반 업데이트에 먼저 쓰지 않습니다.
+6. 23번(Backspace 바로 아래)으로 속기 진입/해제.
+7. Studio에 보이는 맨 아래 60..63은 휠 회전 배정칸이며 클릭키가 아닙니다.
+
+완성 UF2는 없습니다. 실물 동작은 아직 검증하지 않았습니다.
+상세 연결/설정/제약: docs/GUIDE_KO.md
+전체 배열: docs/KEYMAPS.html
+
+이번 변경은 속기 배열: 00 ! / 11 ? / 12 짧게 ~, 200ms 홀드 Tab.
+ㅏ와 ㅣ + JLKI: 방향키. ㅓ + JL: 좌/우클릭, I/K: 위/아래 스크롤, 쉼표: 중앙클릭.
+ㅓ + 트랙볼: 스크롤, 사용 후 Space/ㅓ를 추가 출력하지 않음.
+BASE의 Esc/Tab/Backspace는 그대로입니다.

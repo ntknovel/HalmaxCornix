@@ -1,0 +1,3 @@
+Executed Chromium rendering of actual HTML source (set_content).
+512 key elements / 8 layer buttons / position23 and 4 virtual wheel popups in all layers: PASS.
+Not a real Studio/BLE/Android/device screenshot.

@@ -1,0 +1,91 @@
+{
+  "baseline": "CCK_BALL_4x6_STENO_DUAL_STUDIO_v1.1.0_Source.zip",
+  "unchanged_sha256": {
+    "config/west.yml": "d58eea9a653219d49ee0650bace48f8681eced22f46c96256db48a2c40425af3",
+    "config/cck_ball.conf": "5b147b4d987fba555fe3d50384680da6c2c10af93ebc2d45682bf80f9b18302d",
+    "config/settings_reset.conf": "440f42535cc5d1e01b4b2dc6ba16565a3fd34eed6b445666bf5eed28094e8825",
+    "config/cck_ball.json": "20c51dfcd2843414bf50a53b5d3e7da7d11331d6eb990d037a139e678d54a771",
+    "config/boards/shields/cck_ball/cck_ball.dtsi": "fbaf60509110fe50770a2deb561c96af797561a563f3aa8e49e107876a0a1029",
+    "config/boards/shields/cck_ball/cck_ball_left.overlay": "dabc895fab671ae583e0b47190c43129dece6c33c4306bdd02b291b97b94516d",
+    "config/boards/shields/cck_ball/cck_ball_left.conf": "cfc875b29b6cc68378cdc9de6f0aa27e8fef5eba350218a915ad6eb8f934e020",
+    "src/behavior_cck_wheel.c": "f2cb7f0aee1c7bf0845079cad84b59000f1b2d1da5dae2f820159ec253806962",
+    "src/usb_auto_select.c": "60a50b10c4df2839c02659024f9633b456283ba8d2aeda9aa863b0c019041d4b",
+    "modules/cck-steno/src/steno/steno_decoder.c": "dcb9cfd573f16c22db0f07259b21dd21b6ec04356b6ca0f68126528c4f1fb7df",
+    "modules/cck-steno/src/steno/steno_output.c": "2f6b1729dc38be75bf5676a21bd08a66d84139f3293fc8dbe2f2b8bec56fead3",
+    "modules/cck-steno/src/steno/steno_dictionary_generated.c": "7fe04d9b368d59a6e32335aae2b01ba3be5e2f094daba210703f30b8c87c2dac",
+    "modules/cck-steno/src/steno/steno_quick_generated.c": "43c4ad9c724f55b92293132549aaf3cb47ce43916ccc9b4870a19bfb65c4c966",
+    "modules/cck-steno/src/steno/steno_quick_dispatch.c": "effe01b7be578a066e2dd64fc76a67913ea401150367e22f5e864ffedbef26d3",
+    "modules/cck-steno/src/steno/modu_aux.c": "da422d249eb343c31fbb6cf0c49f0beeafafbfc604da78af8351b294b07b396a",
+    "modules/cck-steno/src/steno/steno_tab.c": "5125ec83514284e8ec9117cd224950ee5ae2ad87d4c383d9387cbafd52a15ec0",
+    "modules/cck-steno/include/cornix_steno/modu_position.h": "dedfbc891a3bbf125e97083867d827a79bc3e787bd6ca134433ee214f183d112",
+    "modules/cck-steno/config/cornix_steno.dtsi": "65b27a13654bb2cc3d743fde61398d3d6c8c4ee9acf01cbe20ef3d92f43ecf98",
+    "modules/cck-steno/config/steno_quick_text.tsv": "4c1be27ab2f06ad06a2c9c2c1510e16ebdeb3790bb3d37953995ee33efefbd2e",
+    "modules/cck-steno/config/cornix.keymap": "2cc4bccdcb90c8d74d404eb86a6d7e27b7b5f93776555d64df0e877ee76236cc",
+    "modules/cck-steno/config/steno_dictionary.tsv": "016161c360e0b32f6a36484868c2fdaa0a14828ebe98997c999759ada3538540",
+    "modules/cck-steno/config/steno_quick_abbreviations.tsv": "79d746a011702921ccd49e650df7a21a040d76d2f641e3b898f7f41145d2c75a",
+    "modules/cck-steno/config/steno_role_layout.tsv": "b589d9cd9b58e11814a7d7252ce59ef78f568e16942fb0796a4c7ea0f8aaa297",
+    "modules/cck-steno/config/cornix.json": "2cf40748171523fd6dedd4459dc328b40b00b47dc2f0b348d54370a67ec9f2c2",
+    "modules/cck-steno/config/abbreviation_dictionary_canonical_v0.1.json": "95c0da6d7636dfa99862882cdc2ca03e1f09721ce51f092c6206405588d714af"
+  },
+  "binding_changes": [
+    {
+      "layer": 5,
+      "position": 12,
+      "old": "&mxtab",
+      "new": "&cck_tab"
+    }
+  ],
+  "behavior_property_changes": {
+    "mxesc.normal_key": [
+      "TILDE",
+      "EXCL"
+    ],
+    "mxbsp.normal_key": [
+      "BSPC",
+      "QUESTION"
+    ]
+  },
+  "all_base_bindings_and_all_wheel_slots_unchanged": true,
+  "runtime_modified_files": [
+    ".github/workflows/build.yml",
+    "CMakeLists.txt",
+    "Kconfig",
+    "PACKAGE_VERSION.txt",
+    "README.md",
+    "START_HERE_KO.txt",
+    "build.yaml",
+    "config/boards/shields/cck_ball/cck_ball_right.conf",
+    "config/boards/shields/cck_ball/cck_ball_right.overlay",
+    "config/cck-steno-aux.dtsi",
+    "config/cck_ball.keymap",
+    "config/cck_layout_reference.json",
+    "modules/cck-steno/src/steno/steno_dual.c",
+    "modules/cck-steno/src/steno/steno_engine.c",
+    "scripts/make_keymaps.py",
+    "tests/run.sh",
+    "tests/test_cmake.py",
+    "tests/test_package.py"
+  ],
+  "new_files": [
+    "dts/bindings/input_processors/ntk,cck-steno-scroll.yaml",
+    "modules/cck-steno/include/cornix_steno/pointer.h",
+    "src/cck_steno_mouse.c",
+    "src/input_processor_cck_scroll.c",
+    "tests/mouse_native_stub.c",
+    "tests/pointing_stubs/config.h",
+    "tests/pointing_stubs/drivers/behavior.h",
+    "tests/pointing_stubs/drivers/input_processor.h",
+    "tests/pointing_stubs/dt-bindings/zmk/pointing.h",
+    "tests/pointing_stubs/zephyr/device.h",
+    "tests/pointing_stubs/zephyr/dt-bindings/input/input-event-codes.h",
+    "tests/pointing_stubs/zephyr/input/input.h",
+    "tests/pointing_stubs/zmk/behavior.h",
+    "tests/pointing_stubs/zmk/events/position_state_changed.h",
+    "tests/pointing_stubs/zmk/keymap.h",
+    "tests/render_keymaps.py",
+    "tests/run_pointing.sh",
+    "tests/test_pointing.c",
+    "tests/test_v111.py"
+  ],
+  "note": "Source comparison only; new vowel gesture behavior is not covered by a keymap-only comparison."
+}

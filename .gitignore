@@ -1,0 +1,12 @@
+build*/
+output/
+__pycache__/
+*.pyc
+*.o
+*.elf
+*.uf2
+*.hex
+*.apk
+*.pem
+*.key
+local.env

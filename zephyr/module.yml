@@ -1,0 +1,6 @@
+name: cck-ball-steno-studio
+build:
+  cmake: .
+  kconfig: Kconfig
+  settings:
+    dts_root: .

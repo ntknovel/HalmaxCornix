@@ -1,0 +1,10 @@
+description: CCK STENO EO held trackball scrolling with vowel consumption
+compatible: "ntk,cck-steno-scroll"
+include: base.yaml
+properties:
+  "#input-processor-cells":
+    type: int
+    required: true
+    const: 0
+  track-remainders:
+    type: boolean
